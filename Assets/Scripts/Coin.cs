@@ -76,7 +76,7 @@ public class Coin : MonoBehaviour
 
         }
 
-        if (GameManager._Instance.soundCont)
+        if (GameManager._Instance.isSoundOn)
         {
             Sound.mute = false;
         }

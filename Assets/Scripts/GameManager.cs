@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     AudioSource sound;
 
-    public bool soundCont;
+    public bool isSoundOn;
     [SerializeField]
     Sprite[] imgSound;
     [SerializeField]
@@ -158,12 +158,12 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Sound") == 1)
         {
-            soundCont = true;
+            isSoundOn = true;
             btn_Sound.GetComponent<Image>().sprite = imgSound[0];
         }
         else
         {
-            soundCont = false;
+            isSoundOn = false;
             btn_Sound.GetComponent<Image>().sprite = imgSound[1];
         }
 
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
 
         SaveVariable();
 
-        if (soundCont)
+        if (isSoundOn)
         {
             sound.mute = false;
         }
@@ -951,15 +951,15 @@ public class GameManager : MonoBehaviour
 
     public void Sound_On_Off(Button btn)
     {
-        if (soundCont)
+        if (isSoundOn)
         {
-            soundCont = false;
+            isSoundOn = false;
             btn.GetComponent<Image>().sprite = imgSound[1];
             PlayerPrefs.SetInt("Sound", 0);
         }
         else
         {
-            soundCont = true;
+            isSoundOn = true;
             btn.GetComponent<Image>().sprite = imgSound[0];
             PlayerPrefs.SetInt("Sound", 1);
         }

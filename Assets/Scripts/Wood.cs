@@ -1247,7 +1247,7 @@ public class Wood : MonoBehaviour
             rigid.constraints = RigidbodyConstraints2D.FreezePositionX;
         }
 
-        if (GameManager._Instance.soundCont)
+        if (GameManager._Instance.isSoundOn)
         {
             sound.mute = false;
         }
