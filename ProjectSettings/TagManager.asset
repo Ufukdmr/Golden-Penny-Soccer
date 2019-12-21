@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Goal
   - Coin_1
+  - AdmobInterstitial
+  - Border
+  - Coin_2
+  - Coin_3
+  - Catch
   layers:
   - Default
   - TransparentFX
