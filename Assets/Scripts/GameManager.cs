@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,10 +17,10 @@ public class GameManager : MonoBehaviour
     private GameObject[] woods;
 
     [SerializeField]
-    private Text txt_Hit;
+    private TextMeshProUGUI txt_Hit;
 
     [SerializeField]
-    private Text txt_Point;
+    private TextMeshProUGUI txt_Point;
 
     [SerializeField]
     private GameObject[] canvasStars;
@@ -41,10 +42,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject AdsMenu;
-
-    [SerializeField]
-    private GameObject tutorialHit;
-
 
     private GameObject hitCoin;
     private GameObject selectedCoin;
@@ -96,7 +93,7 @@ public class GameManager : MonoBehaviour
     private Button btn_Undo;
 
     [SerializeField]
-    private Text txt_OverorContinue;
+    private TextMeshProUGUI txt_OverorContinue;
 
 
     private static GameManager instance;
@@ -139,21 +136,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Repetition", repetition);
         }
         #endregion
-
-        #region TutorialAction
-
-        if (PlayerPrefs.GetInt("Tutorial") == 1)
-        {
-            tutorialHit.SetActive(true);
-            if (SceneManager.GetActiveScene().buildIndex > 2)
-            {
-                PlayerPrefs.SetInt("Tutorial", 0);
-
-            }
-        }
-
-        #endregion
-
+      
         #region SoundAction
 
         if (PlayerPrefs.GetInt("Sound") == 1)
@@ -178,8 +161,8 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         b = Time.time;
-
-        if (AdsMenu.activeSelf && AdsMenu.transform.GetChild(5).gameObject.activeSelf)
+        
+        if (AdsMenu.activeSelf && AdsMenu.transform.GetChild(0).GetChild(4).gameObject.activeSelf)
         {
             if (b == (int)b)
             {
@@ -189,12 +172,13 @@ public class GameManager : MonoBehaviour
 
             passedTime = activeTime / maxTime;
 
-            AdsMenu.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount = Mathf.Lerp(AdsMenu.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount, 1, passedTime * Time.deltaTime);
+            AdsMenu.transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>().fillAmount = Mathf.Lerp(AdsMenu.transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>().fillAmount, 1, passedTime * Time.deltaTime);
 
-            if (AdsMenu.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount > 0.99f)
+            if (AdsMenu.transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>().fillAmount > 0.99f)
             {
                 GameOverorContinue();
             }
+            Debug.Log(passedTime * Time.deltaTime);
         }
 
     }
@@ -203,7 +187,7 @@ public class GameManager : MonoBehaviour
     {
         ClickCoin();
 
-        Debug.Log(PlayerPrefs.GetInt("Sound"));
+
         txt_Point.text = "Point: " + point;
         txt_Hit.text = "Hit: " + Hit + " / " + totalHit;
 
@@ -667,28 +651,28 @@ public class GameManager : MonoBehaviour
         if (totalHit - remainingHit >= 1 && !gameMenu.activeSelf)
         {
             txt_OverorContinue.text = "Game Over";
-            AdsMenu.transform.GetChild(5).gameObject.SetActive(true);
+            AdsMenu.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
 
             if (Undo == 1)
             {
-                AdsMenu.transform.GetChild(1).GetComponent<Text>().text = "Game Over";
-                AdsMenu.transform.GetChild(2).GetComponent<Text>().text = "You have one undo right. Do you want to use ? ";
-                AdsMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = "Use It";
+                AdsMenu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Game Over";
+                AdsMenu.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "You have one undo right. Do you want to use ? ";
+                AdsMenu.transform.GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Use It";
 
 
             }
             else
             {
-                AdsMenu.transform.GetChild(1).GetComponent<Text>().text = "Game Over";
-                AdsMenu.transform.GetChild(2).GetComponent<Text>().text = "You don't have any undo's left. Would you like to earn one ? ";
-                AdsMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = "Watch Ads";
+                AdsMenu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Game Over";
+                AdsMenu.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "You don't have any undo's left. Would you like to earn one ? ";
+                AdsMenu.transform.GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Watch Ads";
             }
             btn_Undo.interactable = false;
-            AdsMenu.SetActive(true);
+            AdsMenu.SetActive(true);            
             goalKeeper[0].GetComponent<GoalKeeper>().rotateSpeed = 0;
             goal.SetActive(false);
             isFinish = true;
-            AdsMenu.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount = 0;
+            AdsMenu.transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>().fillAmount = 0;
 
 
         }
@@ -710,11 +694,11 @@ public class GameManager : MonoBehaviour
         }
 
         gameMenu.SetActive(true);
-        gameMenu.transform.GetChild(7).GetChild(0).GetComponent<Button>().interactable = false;
-        gameMenu.transform.GetChild(1).GetComponent<Text>().text = "Game Over";
-        gameMenu.transform.GetChild(1).GetComponent<Text>().fontSize = 223;
-        gameMenu.transform.GetChild(2).GetComponent<Text>().text = "Hit: " + Hit;
-        gameMenu.transform.GetChild(3).GetComponent<Text>().text = "Point: " + 0;
+        gameMenu.transform.GetChild(0).GetChild(6).GetChild(0).GetComponent<Button>().interactable = false;
+        gameMenu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Game Over";
+        gameMenu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 176;
+        gameMenu.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = "Hit: " + Hit;
+        gameMenu.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = "Point: " + 0;
         goalKeeper[0].GetComponent<GoalKeeper>().rotateSpeed = 0;
         goal.SetActive(false);
         isFinish = true;
@@ -749,8 +733,8 @@ public class GameManager : MonoBehaviour
         gameMenu.SetActive(true);
         point = point + (remainingHit * 500);
 
-        gameMenu.transform.GetChild(2).GetComponent<Text>().text = "Hit: " + Hit;
-        gameMenu.transform.GetChild(3).GetComponent<Text>().text = "Point: " + point;
+        gameMenu.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = "Hit: " + Hit;
+        gameMenu.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = "Point: " + point;
 
         goalKeeper[0].GetComponent<GoalKeeper>().rotateSpeed = 0;
         goalKeeper[0].GetComponent<BoxCollider2D>().enabled = true;
@@ -850,15 +834,16 @@ public class GameManager : MonoBehaviour
 
 
 
-            AdsMenu.transform.GetChild(1).GetComponent<Text>().text = "UNDO";
-            AdsMenu.transform.GetChild(2).GetComponent<Text>().text = "You don't have any undo's left. Would you like to earn one ? ";
-            AdsMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = "Watch Ads";
+            AdsMenu.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "UNDO";
+            AdsMenu.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = "You don't have any undo's left. Would you like to earn one ? ";
+            AdsMenu.transform.GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Watch Ads";
 
 
             AdsMenu.SetActive(true);
-            AdsMenu.transform.GetChild(5).gameObject.SetActive(false);
-            AdsMenu.transform.GetChild(5).GetChild(0).GetComponent<Image>().fillAmount = 0;
-            Time.timeScale = 1;
+            Time.timeScale = 0;
+            AdsMenu.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            AdsMenu.transform.GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>().fillAmount = 0;
+           
         }
 
         if (!goal.activeSelf)

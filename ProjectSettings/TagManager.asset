@@ -11,6 +11,9 @@ TagManager:
   - Coin_2
   - Coin_3
   - Catch
+  - Receivable
+  - AdmobReward
+  - UIManager
   layers:
   - Default
   - TransparentFX
@@ -21,8 +24,8 @@ TagManager:
   - 
   - 
   - Clickable
-  - 
-  - 
+  - Unclickable
+  - Moving
   - 
   - 
   - 

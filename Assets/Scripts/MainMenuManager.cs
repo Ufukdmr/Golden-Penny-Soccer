@@ -10,8 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject Canvas;
 
-    [SerializeField]
-    private GameObject wantTutorial;
+    
 
     private int repetitionCount;
 
@@ -67,7 +66,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void Play()
     {
-        wantTutorial.SetActive(true);
+        SceneManager.LoadScene("Level_1");
     }
 
     public void Continue()
@@ -86,26 +85,7 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Levels");
     }
 
-    public void YesorNo(Text btn_text)
-    {
-        if(btn_text.text=="Yes, Please")
-        {
-            wantTutorial.SetActive(false);
-            PlayerPrefs.SetInt("Tutorial", 1);
-            SceneManager.LoadScene("Level_1");
-        }
-        else if(btn_text.text=="No, Thanks")
-        {
-            wantTutorial.SetActive(false);
-            PlayerPrefs.SetInt("Tutorial", 0);
-            SceneManager.LoadScene("Level_1");
-        }
-        else
-        {
-            wantTutorial.SetActive(false);
-        }
-    }
-
+  
     public void Sound_OnorOff()
     {
         if (isSoundOn)
