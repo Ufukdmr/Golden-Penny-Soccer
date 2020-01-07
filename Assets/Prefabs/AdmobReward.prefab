@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5519713086381978091}
-  - component: {fileID: 5519713086381978090}
+  - component: {fileID: 5723988486423876337}
   m_Layer: 9
   m_Name: AdmobReward
   m_TagString: AdmobReward
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5519713086381978090
+--- !u!114 &5723988486423876337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5519713086381978093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f626f54286865d4c8ba92fb00a82391, type: 3}
+  m_Script: {fileID: 11500000, guid: 33952c559d1a67e428fd8c7292e00f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

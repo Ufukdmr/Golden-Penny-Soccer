@@ -14,6 +14,7 @@ TagManager:
   - Receivable
   - AdmobReward
   - UIManager
+  - Wood
   layers:
   - Default
   - TransparentFX

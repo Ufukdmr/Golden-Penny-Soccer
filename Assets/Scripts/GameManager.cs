@@ -202,7 +202,15 @@ public class GameManager : MonoBehaviour
             sound.mute = true;
         }
 
-
+        if (RayCastManager._Instance.isStopped(coins[0]) && RayCastManager._Instance.isStopped(coins[1]) &&RayCastManager._Instance.isStopped(coins[2])&&!isGoal)
+        {
+            if (Hit == totalHit)
+            {
+                isFinish = true;
+                AdsShow();
+                
+            }
+        }
         if (!RayCastManager._Instance.isStopped(coins[0]) || !RayCastManager._Instance.isStopped(coins[1]) || !RayCastManager._Instance.isStopped(coins[2]))
         {
             btn_Undo.interactable = false;
@@ -597,8 +605,7 @@ public class GameManager : MonoBehaviour
         }
         remainingHit--;
         Hit = totalHit - remainingHit;
-
-
+        
     }
 
     public void TakeStar(GameObject throwedCoin)
