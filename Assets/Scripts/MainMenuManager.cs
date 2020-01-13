@@ -71,7 +71,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadScene("Level_" + (PlayerPrefs.GetInt("Level") + 1).ToString());
+        SceneManager.LoadScene("Level_" + (PlayerPrefs.GetInt("Level")).ToString());
     }
 
     public void Quit()

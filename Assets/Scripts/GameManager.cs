@@ -112,8 +112,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
-        if (PlayerPrefs.GetInt("Level") < SceneManager.GetActiveScene().buildIndex && SceneManager.GetActiveScene().buildIndex == 25)
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "Pass", 1);
+        if (PlayerPrefs.GetInt("Level") < SceneManager.GetActiveScene().buildIndex)
         {
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
         }
@@ -178,9 +178,10 @@ public class GameManager : MonoBehaviour
             {
                 GameOverorContinue();
             }
-            Debug.Log(passedTime * Time.deltaTime);
+            
         }
 
+       
     }
 
     void Update()
@@ -227,6 +228,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");
         }
+        Debug.Log(PlayerPrefs.GetInt("Level"));
     }
 
     private void ClickCoin()
@@ -878,10 +880,10 @@ public class GameManager : MonoBehaviour
     {
         if (Undo == 0)
         {
-            AdsMenu.transform.GetChild(3).GetChild(0).GetChild(0).GetComponent<Text>().text = "Ads Waiting";
-            AdsMenu.transform.GetChild(3).GetChild(0).GetComponent<Button>().interactable = false;
+            AdsMenu.transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = "Ads Waiting";
+            AdsMenu.transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Button>().interactable = false;
             GameObject.FindGameObjectWithTag("AdmobReward").GetComponent<AdmobReward>().RequestRewardAds();
-            AdsMenu.transform.GetChild(3).GetChild(0).GetComponent<Button>().interactable = true;
+            AdsMenu.transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Button>().interactable = true;
 
         }
         else
@@ -927,6 +929,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveData()
     {
+        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name+"Pass", 1);
         if (PlayerPrefs.GetInt("Level") <= SceneManager.GetActiveScene().buildIndex)
         {
             PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);

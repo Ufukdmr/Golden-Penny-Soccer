@@ -15,6 +15,7 @@ TagManager:
   - AdmobReward
   - UIManager
   - Wood
+  - FourStar
   layers:
   - Default
   - TransparentFX

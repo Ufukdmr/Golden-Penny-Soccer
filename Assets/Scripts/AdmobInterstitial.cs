@@ -29,7 +29,6 @@ public class AdmobInterstitial : MonoBehaviour
             //  this.interstitial.LoadAd(request);
 
             AdRequest request = new AdRequest.Builder()
-        .AddTestDevice("CB4A85201841862")
         .Build();
             this.interstitial.LoadAd(request);
 
@@ -57,7 +56,7 @@ public class AdmobInterstitial : MonoBehaviour
     private void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        string adUnitId = "ca-app-pub-6411957783425861/3465334655";
 #elif UNITY_IPHONE
                                             string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else

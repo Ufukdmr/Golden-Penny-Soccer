@@ -33,8 +33,8 @@ public class AdmobReward : MonoBehaviour
     {
 
 
-        AdRequest request = new AdRequest.Builder().AddTestDevice("CB4A85201841862").Build();
-        rewardBasedVideo.LoadAd(request, "ca-app-pub-3940256099942544/5224354917");
+        AdRequest request = new AdRequest.Builder().Build();
+        rewardBasedVideo.LoadAd(request, "ca-app-pub-6411957783425861/6692109707");
 
         ShowAds();
 
