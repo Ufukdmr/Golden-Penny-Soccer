@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "Pass", 1);
+        
         if (PlayerPrefs.GetInt("Level") < SceneManager.GetActiveScene().buildIndex)
         {
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
@@ -744,6 +744,12 @@ public class GameManager : MonoBehaviour
 
         gameMenu.transform.GetChild(0).GetChild(4).GetComponent<TextMeshProUGUI>().text = "Hit: " + Hit;
         gameMenu.transform.GetChild(0).GetChild(5).GetComponent<TextMeshProUGUI>().text = "Point: " + point;
+
+        if (SceneManager.GetActiveScene().buildIndex == 23)
+        {
+            gameMenu.transform.GetChild(0).GetChild(6).gameObject.SetActive(false);
+            gameMenu.transform.GetChild(0).GetChild(10).gameObject.SetActive(true);
+        }
 
         goalKeeper[0].GetComponent<GoalKeeper>().rotateSpeed = 0;
         goalKeeper[0].GetComponent<BoxCollider2D>().enabled = true;

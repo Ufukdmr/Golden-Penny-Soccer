@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 179800496}
   - component: {fileID: 179800495}
   m_Layer: 5
-  m_Name: btn_Countinue
+  m_Name: btn_Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Countinue
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bd46a9724d9e6a48ae8cf36570a44a2, type: 2}
   m_sharedMaterial: {fileID: 2609435927185729798, guid: 0bd46a9724d9e6a48ae8cf36570a44a2,
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 556429560}
-    characterCount: 9
+    characterCount: 8
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1577,7 +1577,7 @@ GameObject:
   - component: {fileID: 1675618228}
   - component: {fileID: 1675618227}
   m_Layer: 5
-  m_Name: Shadow_Countinue
+  m_Name: Shadow_Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

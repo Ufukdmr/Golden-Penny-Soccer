@@ -34,6 +34,12 @@ public class AnimationScript : MonoBehaviour
    
     void Update()
     {
+        InteractableButton();
+       Debug.Log(moveCount);
+    }
+
+    void InteractableButton()
+    {
         if (moveCount == 1)
         {
             btn_Left.interactable = false;
@@ -47,19 +53,18 @@ public class AnimationScript : MonoBehaviour
             btn_Left.interactable = true;
             btn_Right.interactable = true;
         }
-       
     }
-
     public void OpenAnimWindow()
     {
         tutorialPanel.SetActive(true);
+        btn_Right.interactable = true;
         anim.SetInteger("Level", 1);
         text.fontSize = 115;
         text.text = "Touch On The Penny Once To Select It";
         anim.ResetTrigger("Close");
         anim.SetTrigger("Open");
         moveCount = 1;
-       
+        InteractableButton();
     }
 
     public void RightorLeft(Button btn)
@@ -122,6 +127,7 @@ public class AnimationScript : MonoBehaviour
         anim.ResetTrigger("Throwed");
         anim.SetTrigger("Close");
         anim.ResetTrigger("Open");
+        
     }
 
 }
